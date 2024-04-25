@@ -29,7 +29,7 @@ class ReviewController extends Controller
                 'action' => '/admin/reviews/add'
             ]);
         }
-        return view('user.makepost', [
+        return view('user.makereview', [
             'title' => 'Make A Review',
             'method' => 'POST',
             'action' => '/user/reviews/add'
