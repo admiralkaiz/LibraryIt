@@ -14,6 +14,9 @@ class BookController extends Controller
      */
     public function index()
     {
+        /**
+         * Menampilkan data seluruh buku yang ada
+         */
         return view('allbooks', [
             'title' => 'LibraryIt | Books',
             'list' => Book::get(),
@@ -27,6 +30,11 @@ class BookController extends Controller
      */
     public function create()
     {
+        /**
+         * Menampilkan form peminjaman buku
+         * Fungsi ini hanya dapat diakses oleh admin
+         * 
+         */
         return view('admin.bookform', [
             'title' => 'Input New Book',
             'method' => 'POST',
@@ -39,6 +47,9 @@ class BookController extends Controller
      */
     public function store(Request $req)
     {
+        /**
+         * Menyimpan buku ke dalam database
+         */
         $req->validate([
             'isbn' => 'required',
             'title' => 'required',
@@ -61,7 +72,7 @@ class BookController extends Controller
             $book->image = $imageName;
         }
         $book->save();
-        return redirect('/admin/books')->with('msg', 'Successfully Added A Book!');
+        return redirect('/admin/books');
     }
 
     /**
@@ -69,6 +80,9 @@ class BookController extends Controller
      */
     public function show(string $id)
     {
+        /**
+         * Menampilkan informasi salah satu buku
+         */
         $book = Book::find($id);
 
         if ($book) {
@@ -91,10 +105,13 @@ class BookController extends Controller
      */
     public function edit(string $id)
     {
+        /**
+         * Mengedit data buku
+         */
         return view('admin.bookform', [
             'title' => 'Edit Existing Book',
             'method' => 'PUT',
-            'action' => "/admin/$id/books/update",
+            'action' => "/admin/books/$id/update",
             'data' => Book::find($id)
         ]);
     }
@@ -104,6 +121,9 @@ class BookController extends Controller
      */
     public function update(Request $req, string $id)
     {
+        /**
+         * Memperbarui data buku yang sudah diedit
+         */
         $req->validate([
             'isbn' => 'required',
             'title' => 'required',
@@ -130,7 +150,7 @@ class BookController extends Controller
 
         $book->save();
 
-        return redirect('/admin/books')->with('msg', 'Successfully Updated A Book!');
+        return redirect('/admin/books');
     }
 
     /**
@@ -138,6 +158,9 @@ class BookController extends Controller
      */
     public function destroy(string $id)
     {
+        /**
+         * Menghapus buku dari database
+         */
         $book = Book::find($id);
         foreach ($book->reviews()->get() as $r) {
             Review::destroy($r->id);

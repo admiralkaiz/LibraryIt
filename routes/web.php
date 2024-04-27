@@ -21,30 +21,40 @@ use PhpParser\Node\Expr\FuncCall;
 |
 */
 
+// Menampilkan landing page
 Route::get('/', function () {
     return view('landing_page');
 });
 
+// Autentikasi user
 Route::post('/auth', [SiteController::class, 'auth']);
 
+// Menampilkan form registrasi user baru
 Route::get('/register', function () {
     return view('register');
 });
 
+// Menambahkan data user baru ke dalam database
 Route::post('/registerUser', [UserController::class, 'registerUser']);
 
+// Fungsi untuk melakukan login
 Route::get('/login', function() {
     if (Auth::check()) return redirect('/product');
     return view('login');
 })->name('login');
 
+// Fungsi untuk melakukan logout
 Route::get('/logout', function() {
     Auth::logout();
     return redirect('/');
 });
 
+// Fungsi yang hanya dapat diakses oleh pengguna yang terdaftar
 Route::middleware(['auth'])->group(function () {
+
+    // Sekumpulan fungsi yang hanya dapat diakses oleh admin
     Route::middleware(['admin'])->group(function () {
+        // CRUD buku
         Route::get('/admin/books', [BookController::class, 'index']);
         Route::get('/admin/books/create', [BookController::class, 'create']);
         Route::post('/admin/books/store', [BookController::class, 'store']);
@@ -69,7 +79,9 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/admin/reviews/{id}/delete', [ReviewController::class, 'destroy']);
     });
 
-    // Book CRUD
+    // Sisanya, dapat diakses oleh user
+
+    // Book showing
     Route::get('/user/books', [BookController::class, 'index']);
     Route::get('/user/books/{id}', [BookController::class, 'show']);
 

@@ -16,11 +16,18 @@ class BorrowingController extends Controller
      */
     public function index()
     {
-        foreach (Borrowing::get() as $b) {
-            if (Carbon::now()->gt(Carbon::parse($b->borrow_date))) {
-                $b->is_late = 1;
-            }
-        }
+        /**
+         * Fungsi untuk menampilkan seluruh data peminjaman buku
+         * Admin dapat melihat semua record peminjaman buku dan
+         * user hanya dapat melihat peminjaman buku yang dilakukan
+         * user yang bersangkutan yang masih berlangsung (atau belum dikembalikan)
+        */
+
+        // foreach (Borrowing::get() as $b) {
+        //     if (Carbon::now()->gt(Carbon::parse($b->borrow_date))) {
+        //         $b->is_late = 1;
+        //     }
+        // }
 
         return view('borrowinglist', [
             'borrowings' => Borrowing::get(),
@@ -35,6 +42,9 @@ class BorrowingController extends Controller
      */
     public function create()
     {
+        /**
+         * Fungsi untuk menampilkan form input data peminjaman buku
+         */
         return view('admin.borrowingform', [
             'title' => 'Input New Borrowing',
             'method' => 'POST',
@@ -49,6 +59,12 @@ class BorrowingController extends Controller
      */
     public function store(Request $req)
     {
+        /**
+         * Fungsi ini berfungsi untuk menyimpan data baru peminjaman buku 
+         * ke dalam database. Fungsi ini hanya bisa diakses oleh admin.
+         */
+
+        // Validasi request
         $req->validate([
             'user_id' => 'required',
             'book_id' => 'required',
@@ -59,11 +75,13 @@ class BorrowingController extends Controller
         $borrowing->user_id = $req->user_id;
         $borrowing->book_id = $req->book_id;
         
+        // Menambahkan tanggal pada data baru peminjaman buku
         $startDate = Carbon::now();
         $endDate = Carbon::now()->addDays(7);
-        
         $borrowing->borrow_date = $startDate;
         $borrowing->return_date = $endDate;
+
+        // Default status pengembalian dan keterlambatan adalah 0(false)
         $borrowing->is_returned = 0;
         $borrowing->is_late = 0;
 
@@ -73,41 +91,14 @@ class BorrowingController extends Controller
     }
 
     public function setAsReturned(string $id) {
+        /**
+         * Fungsi ini berfungsi untuk menandakan status pengembalian sebuah peminjaman buku
+         * sebagai sudah dikembalikan
+         * 
+         */
         $borrowing = Borrowing::find($id);
         $borrowing->is_returned = 1;
         $borrowing->save();
         return redirect('/admin/borrowings');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }

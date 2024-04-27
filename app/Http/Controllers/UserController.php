@@ -8,10 +8,16 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    /**
+     * Fungsi untuk menampilkan form registrasi user baru
+     */
     public function registerForm() {
         return view('register');
     }
 
+    /**
+     * Form untuk menambahkan data user baru ke dalam database
+     */
     public function registerUser(Request $req) {
         $req->validate([
             'name' => 'required|unique:users,name|min:4',

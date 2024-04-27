@@ -22,26 +22,6 @@ class PostController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        // if (Auth::user()->is_admin == 1)
-        // {
-        //     return view('admin.makepost', [
-        //         'title' => 'Make A Post',
-        //         'method' => 'POST',
-        //         'action' => '/admin/posts/add'
-        //     ]);
-        // }
-        // return view('user.makepost', [
-        //     'title' => 'Make A Post',
-        //     'method' => 'POST',
-        //     'action' => '/user/posts/add'
-        // ]);
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $req)
@@ -69,30 +49,6 @@ class PostController extends Controller
             return redirect('/admin/posts');
         }
         return redirect('/user/posts');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
     }
 
     /**
