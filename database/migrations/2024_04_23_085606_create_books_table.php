@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('publisher');
             $table->integer('year');
             $table->string('image')->default('notfound.jpg');
-            $table->string('synopsis');
+            $table->text('synopsis');
             $table->timestamps();
         });
     }

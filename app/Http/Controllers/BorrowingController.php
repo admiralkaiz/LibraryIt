@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\Borrowing;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,14 +22,11 @@ class BorrowingController extends Controller
             }
         }
 
-        if (Auth::user()->is_admin == 1)
-        {
-            return view('admin.allborrowings', [
-                'list' => Borrowing::get()
-            ]);
-        }
-        return view('user.allbooks', [
-            'list' => Borrowing::get()
+        return view('borrowinglist', [
+            'borrowings' => Borrowing::get(),
+            'title' => 'LibraryIt | Borrowing List',
+            'admin_mode' => Auth::user()->is_admin==1,
+            'role' => (Auth::user()->is_admin==1)? 'admin' : 'user'
         ]);
     }
 
@@ -39,7 +38,9 @@ class BorrowingController extends Controller
         return view('admin.borrowingform', [
             'title' => 'Input New Borrowing',
             'method' => 'POST',
-            'action' => '/admin/borrowings/store'
+            'action' => '/admin/borrowings/store',
+            'userslist' => User::get(),
+            'bookslist' => Book::get(),
         ]);
     }
 
@@ -59,7 +60,7 @@ class BorrowingController extends Controller
         $borrowing->book_id = $req->book_id;
         
         $startDate = Carbon::now();
-        $endDate = $startDate->addDays(7);
+        $endDate = Carbon::now()->addDays(7);
         
         $borrowing->borrow_date = $startDate;
         $borrowing->return_date = $endDate;

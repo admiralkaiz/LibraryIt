@@ -13,14 +13,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->is_admin == 1)
-        {
-            return view('admin.allposts', [
-                'list' => Post::get()
-            ]);
-        }
-        return view('user.allposts', [
-            'list' => Post::get()
+        return view('posts', [
+            'title' => 'LibraryIt | Posts',
+            'list' => Post::get(),
+            'admin_mode' => Auth::user()->is_admin==1,
+            'role' => (Auth::user()->is_admin==1)? 'admin' : 'user'
         ]);
     }
 
@@ -29,19 +26,19 @@ class PostController extends Controller
      */
     public function create()
     {
-        if (Auth::user()->is_admin == 1)
-        {
-            return view('admin.makepost', [
-                'title' => 'Make A Post',
-                'method' => 'POST',
-                'action' => '/admin/posts/add'
-            ]);
-        }
-        return view('user.makepost', [
-            'title' => 'Make A Post',
-            'method' => 'POST',
-            'action' => '/user/posts/add'
-        ]);
+        // if (Auth::user()->is_admin == 1)
+        // {
+        //     return view('admin.makepost', [
+        //         'title' => 'Make A Post',
+        //         'method' => 'POST',
+        //         'action' => '/admin/posts/add'
+        //     ]);
+        // }
+        // return view('user.makepost', [
+        //     'title' => 'Make A Post',
+        //     'method' => 'POST',
+        //     'action' => '/user/posts/add'
+        // ]);
     }
 
     /**
@@ -56,6 +53,7 @@ class PostController extends Controller
         ]);
 
         $post = new Post;
+        $post->user_id = Auth::user()->id;
         $post->title = $req->title;
         $post->description = $req->description;
 
@@ -102,12 +100,7 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        if (Post::find($id)->user()->get()->id == Auth::user()->id) {
-            Post::destroy($id);
-        }
-        if (Auth::user()->is_admin == 1) {
-            return redirect('/admin/posts');
-        }
+        Post::destroy($id);
         return redirect('/user/posts');
     }
 }

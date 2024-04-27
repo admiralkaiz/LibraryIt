@@ -21,19 +21,19 @@ class ReviewController extends Controller
      */
     public function create()
     {
-        if (Auth::user()->is_admin == 1)
-        {
-            return view('admin.makereview', [
-                'title' => 'Make A Review',
-                'method' => 'POST',
-                'action' => '/admin/reviews/add'
-            ]);
-        }
-        return view('user.makereview', [
-            'title' => 'Make A Review',
-            'method' => 'POST',
-            'action' => '/user/reviews/add'
-        ]);
+        // if (Auth::user()->is_admin == 1)
+        // {
+        //     return view('admin.makereview', [
+        //         'title' => 'Make A Review',
+        //         'method' => 'POST',
+        //         'action' => '/admin/reviews/add'
+        //     ]);
+        // }
+        // return view('user.makereview', [
+        //     'title' => 'Make A Review',
+        //     'method' => 'POST',
+        //     'action' => '/user/reviews/add'
+        // ]);
     }
 
     /**
@@ -48,6 +48,8 @@ class ReviewController extends Controller
         ]);
 
         $rev = new Review;
+        $rev->user_id = Auth::user()->id;
+        $rev->book_id = $req->book_id;
         $rev->title = $req->title;
         $rev->description = $req->description;
 
@@ -91,10 +93,7 @@ class ReviewController extends Controller
      */
     public function destroy(string $id)
     {
-        if (Review::find($id)->user()->get()->id == Auth::user()->id) {
-            Review::destroy($id);
-        }
-        
+        Review::destroy($id);
         return redirect()->back();
     }
 }

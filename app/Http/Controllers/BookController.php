@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,14 +14,11 @@ class BookController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->is_admin == 1)
-        {
-            return view('admin.allbooks', [
-                'list' => Book::get()
-            ]);
-        }
-        return view('user.allbooks', [
-            'list' => Book::get()
+        return view('allbooks', [
+            'title' => 'LibraryIt | Books',
+            'list' => Book::get(),
+            'admin_mode' => Auth::user()->is_admin == 1,
+            'role' => (Auth::user()->is_admin==1)?'admin':'user'
         ]);
     }
 
@@ -71,7 +69,21 @@ class BookController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $book = Book::find($id);
+
+        if ($book) {
+            return view('bookinfo', [
+                'title' => "LibraryIt | $book->title",
+                'admin_mode' => Auth::user()->is_admin == 1,
+                'role' => (Auth::user()->is_admin==1)?'admin':'user',
+                'data' => $book,
+                'reviews' => $book->reviews()->get()
+            ]);
+        }
+        return view('bookinfo', [
+            'title' => "LibraryIt | Book Not Found",
+            'err_msg' => 'Sorry... Book is not found!'
+        ]);
     }
 
     /**
@@ -126,6 +138,10 @@ class BookController extends Controller
      */
     public function destroy(string $id)
     {
+        $book = Book::find($id);
+        foreach ($book->reviews()->get() as $r) {
+            Review::destroy($r->id);
+        }
         Book::destroy($id);
         return redirect('/admin/books')->with('msg', 'Successfully Deleted A Book!');
     }

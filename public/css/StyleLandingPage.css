@@ -1,0 +1,274 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #D4E0FF;
+  color: #333;
+}
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-link {
+  margin-left: 20px;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar-link:hover {
+  color: #5352ED;
+}
+
+.search-form {
+  position: relative;
+  margin-left: 20px;
+}
+
+.search-input {
+  padding: 5px 10px;
+  border: 3px solid #000000;
+  border-radius: 5px;
+}
+
+.search-button {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.navbar-masuk {
+  margin-left: 20px;
+  color: #5352ED;
+  text-decoration: none;
+  font-weight: bold;
+}
+.navbar-masuk:hover {
+    color: #ED5353;
+}
+.navbar-button {
+  margin-left: 20px;
+  padding: 7px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ED5353;
+  color: white;
+  cursor: pointer;
+  border-bottom: none;
+}
+
+.navbar-button a {
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar-button:hover {
+    background-color: #5352ED;
+}
+.add-teks {
+  text-align: center;
+  margin-top: 50px;
+  font-weight: bold;
+  font-size: 20px;
+  color: #5352ED;
+}
+.add-teks span{
+  color: #000000;
+}
+.gambar-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.gambar-landing {
+  max-width: 430px;
+}
+.container-kotak1 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: -364px;
+  margin-right: 100px;
+}
+.container-kotak2 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 30px;
+  margin-right: 100px
+}
+.container-kotak3 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 30px;
+  margin-right: 100px
+}
+.container-kotak4 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: -300px;
+  margin-left: 150px
+}
+.container-kotak5 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 70px;
+  margin-left: 150px
+}
+.container-kotak6 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 60px;
+  margin-left: 150px
+}
+.kotak {
+  width: 300px;
+  height: 20px;
+  border: 0px solid #000000;
+  padding: 20px;
+  background-color: #5352ED; 
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+.kotak p{
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  margin-left: 50px;
+}
+.kotak p span{
+  color: #52E9C5;
+}
+.bulat {
+  width: 80px;
+  height: 80px;
+  background-color: #D9D9D9;
+  border-radius: 50%;
+  position: relative;
+  margin-right: -25px;
+}
+.kotak-kiri {
+  width: 120px;
+  height: 15px;
+  border: 0px solid #000000;
+  padding: 20px;
+  background-color: #5352ED; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.kotak-kiri p{
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  margin-right: 50px;
+}
+.kotak-kiri4 {
+  width: 120px;
+  height: 5px;
+  border: 0px solid #000000;
+  padding: 20px;
+  background-color: #5352ED; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-left: 80px;
+}
+.kotak-kiri4 p{
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  margin-right: 50px;
+}
+.kotak-kiri5 {
+  width: 120px;
+  height: 5px;
+  border: 0px solid #000000;
+  padding: 20px;
+  background-color: #5352ED; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-left: 220px;
+}
+.kotak-kiri5 p{
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  margin-right: 50px;
+}
+.kotak-kiri6 {
+  width: 120px;
+  height: 5px;
+  border: 0px solid #000000;
+  padding: 20px;
+  background-color: #5352ED; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-left: 5px;
+}
+.kotak-kiri6 p{
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  margin-right: 50px;
+}
+.bulat-kiri4 {
+  width: 65px;
+  height: 65px;
+  background-color: #D9D9D9;
+  border-radius: 50%;
+  position: absolute;
+  left: 350px;
+  top: 30%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+.bulat-kiri5 {
+  width: 65px;
+  height: 65px;
+  background-color: #D9D9D9;
+  border-radius: 50%;
+  position: absolute;
+  left: 490px;
+  top: 45%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+.bulat-kiri6 {
+  width: 65px;
+  height: 65px;
+  background-color: #D9D9D9;
+  border-radius: 50%;
+  position: absolute;
+  left: 270px;
+  top: 59%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
