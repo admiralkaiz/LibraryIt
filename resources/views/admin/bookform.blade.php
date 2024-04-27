@@ -17,6 +17,15 @@
                 <input type="hidden" name="_method" value="{{ $method }}" />
                 <div class="form-group">
                     <label>
+                        ISBN code
+                    </label>
+                    <input type="text" name="isbn" class="form-control @error('isbn') is-invalid @enderror" value="{{ isset($data)?$data->isbn:old('isbn') }}">
+                    @error('isbn')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label>
                         Title
                     </label>
                     <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" value="{{ isset($data)?$data->title:old('title') }}">
@@ -55,7 +64,7 @@
                     <label>
                         Synopsis
                     </label>
-                    <input type="synopsis" name="year" class="form-control @error('synopsis') is-invalid @enderror" value="{{ isset($data)?$data->synopsis:old('synopsis') }}">
+                    <input type="text" name="synopsis" class="form-control @error('synopsis') is-invalid @enderror" value="{{ isset($data)?$data->synopsis:old('synopsis') }}">
                     @error('synopsis')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
