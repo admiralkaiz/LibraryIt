@@ -6,6 +6,7 @@ use App\Models\Book;
 use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class BookController extends Controller
 {
@@ -19,7 +20,7 @@ class BookController extends Controller
          */
         return view('allbooks', [
             'title' => 'LibraryIt | Books',
-            'list' => Book::get(),
+            'list' => DB::table('books')->paginate(10),
             'admin_mode' => Auth::user()->is_admin == 1,
             'role' => (Auth::user()->is_admin==1)?'admin':'user'
         ]);
@@ -35,7 +36,7 @@ class BookController extends Controller
          * Fungsi ini hanya dapat diakses oleh admin
          * 
          */
-        return view('admin.bookform', [
+        return view('bookform', [
             'title' => 'Input New Book',
             'method' => 'POST',
             'action' => '/admin/books/store'
@@ -91,7 +92,8 @@ class BookController extends Controller
                 'admin_mode' => Auth::user()->is_admin == 1,
                 'role' => (Auth::user()->is_admin==1)?'admin':'user',
                 'data' => $book,
-                'reviews' => $book->reviews()->get()
+                // 'reviews' => $book->reviews()->get()
+                'reviews' => Review::where('book_id', '=', $book->id)->paginate(10)
             ]);
         }
         return view('bookinfo', [
@@ -108,7 +110,7 @@ class BookController extends Controller
         /**
          * Mengedit data buku
          */
-        return view('admin.bookform', [
+        return view('bookform', [
             'title' => 'Edit Existing Book',
             'method' => 'PUT',
             'action' => "/admin/books/$id/update",

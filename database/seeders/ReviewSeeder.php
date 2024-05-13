@@ -15,7 +15,7 @@ class ReviewSeeder extends Seeder
     {
         DB::table('reviews')->insert([
             'user_id' => 2,
-            'book_id' => 2,
+            'book_id' => 1,
             'title' => 'Das Buch ist gut',
             'description' => 'Bermanfaat banget guys...'
         ]);

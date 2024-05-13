@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -15,7 +16,7 @@ class PostController extends Controller
     {
         return view('posts', [
             'title' => 'LibraryIt | Posts',
-            'list' => Post::get(),
+            'list' => DB::table('posts')->paginate(1),
             'admin_mode' => Auth::user()->is_admin==1,
             'role' => (Auth::user()->is_admin==1)? 'admin' : 'user'
         ]);
@@ -49,6 +50,16 @@ class PostController extends Controller
             return redirect('/admin/posts');
         }
         return redirect('/user/posts');
+    }
+
+    public function show(string $id) {
+        $postingan = Post::find($id);
+        return view('showpost', [
+            'title' => "LibraryIt | $postingan->title",
+            'admin_mode' => Auth::user()->is_admin == 1,
+            'role' => (Auth::user()->is_admin==1)?'admin':'user',
+            'data' => $postingan,
+        ]);
     }
 
     /**

@@ -1,9 +1,9 @@
-@extends('template')
+@extends('newtemplate')
 
 @section('title', $title)
 
 @section('content')
-<div class="container">
+<div class="table-container">
     <h3>Form Peminjaman Buku</h3>
     <form action="/admin/borrowings/store" method="POST">
         @csrf

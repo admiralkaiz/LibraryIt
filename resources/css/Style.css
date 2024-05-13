@@ -1,0 +1,645 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.login-container {
+    width: 400px;
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+}
+.login-container h2 {
+    margin-bottom: 20px;
+}
+.login-container p {
+    margin-bottom: 40px;
+}
+.login-container label {
+    float: left;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 7px;
+    color: #5352ED;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+.login-container .forgot-password {
+    float: right;
+    text-align: right;
+    margin-bottom: 10px;
+    text-decoration: none; 
+}
+.login-container .forgot-password a {
+    font-size: 14px;
+    color: #5352ED;
+}
+.login-container .forgot-password:hover {
+    text-decoration: underline;
+}
+.login-container button {
+    width: 75%;
+    height: 35px;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.login-container button.login-button {
+    background-color: #FF7F56;
+    color: white;
+}
+.login-container button.google-button {
+    background-color: #fff;
+    color: #FF7F56;
+    border: 2px solid #FF7F56;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    padding-left: 40px;
+}
+.login-container button:hover {
+    opacity: 0.8;
+}
+.login-container button.login-button:hover {
+    background-color: #3b48ff;
+}
+.login-container button.google-button:hover {
+    border-color: #3b48ff;
+    color: #3b48ff;
+}
+.login-container input[type="email"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #5352ED;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding-left: 20px;
+}
+.google-logo {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 95px;
+    top: 50%;
+    transform: translateY(-50%);
+    vertical-align: middle;
+}
+.register-link {
+    margin-top: 20px;
+    font-size: 14px; 
+    color: #000000;
+}
+.register-link a{
+    color: #5352ED;
+}
+
+/*Registrasi form */
+ .register-container {
+    width: 400px;
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+}
+.register-container h3 {
+    margin-bottom: 20px;
+    background-image: linear-gradient(to bottom, #272765, #FF7F56);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.register-container label {
+    float: left;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 7px;
+    color: #5352ED;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+.register-container .forgot-password {
+    float: right;
+    text-align: right;
+    margin-bottom: 10px;
+    text-decoration: none; 
+}
+.login-container .forgot-password a {
+    font-size: 14px;
+    color: #5352ED;
+}
+.register-container .forgot-password:hover {
+    text-decoration: underline;
+}
+.register-container button {
+    width: 75%;
+    height: 35px;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.register-container button.signup-button {
+    background-color: #FF7F56;
+    color: white;
+    font-size: 17px;
+    top: 50%;
+    margin-top: 30px;
+}
+.register-container button.google-button {
+    background-color: #fff;
+    color: #000000;
+    border: 2px solid #FF7F56;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    padding-left: 10px;
+    font-weight: 700;
+    font-size: 15px;
+}
+.register-container button:hover {
+    opacity: 0.8;
+}
+.register-container button.signup-button:hover {
+    background-color: #3b48ff;
+}
+.register-container button.google-button:hover {
+    border-color: #3b48ff;
+    color: #3b48ff;
+}
+.register-container input[type="email"],
+.register-container input[type="text"],
+.register-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #5352ED;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding-left: 20px;
+}
+.google-logo {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 75px;
+    top: 50%;
+    transform: translateY(-50%);
+    vertical-align: middle;
+}
+.facebook-logo{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 205px;
+    top: 50%;
+    transform: translateY(-50%);
+    vertical-align: middle;
+}
+.privacy-terms {
+    margin-top: 20px;
+    font-size: 11px; 
+    font-weight: 500;
+    color: #000000;
+}
+.privacy-terms a{
+    color: #FF7F56;
+}
+.already-have {
+    margin-top: 20px;
+    font-size: 13px; 
+    color: #000000;
+}
+.already-have a{
+    color: #5352ED;
+}
+/* Form Peminjaman */
+   .peminjaman-container {
+    width: 400px;
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+}
+.peminjaman-container h3 {
+    margin-bottom: 20px;
+    background-color: #000000;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.peminjaman-container label {
+    float: left;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 7px;
+    color: #5352ED;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+.peminjaman-container button {
+    width: 75%;
+    height: 35px;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.peminjaman-container button.selesai-button {
+    background-color: #FF7F56;
+    color: white;
+    font-size: 17px;
+    top: 50%;
+    margin-top: 30px;
+}
+.peminjaman-container button:hover {
+    opacity: 0.8;
+}
+.peminjaman-container button.selesai-button:hover {
+    background-color: #3b48ff;
+}
+.peminjaman-container input[type="email"],
+.peminjaman-container input[type="text"],
+.peminjaman-container input[type="number"],
+.peminjaman-container input[type="date"],
+.peminjaman-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #5352ED;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding-left: 20px;
+}
+/* Form Pengembalian*/
+.pengembalian-container {
+    width: 400px;
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+}
+.pengembalian-container h3 {
+    margin-bottom: 20px;
+    background-color: #000000;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.pengembalian-container label {
+    float: left;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 7px;
+    color: #5352ED;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+.pengembalian-container button {
+    width: 75%;
+    height: 35px;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.pengembalian-container button.selesai-button {
+    background-color: #FF7F56;
+    color: white;
+    font-size: 17px;
+    top: 50%;
+    margin-top: 30px;
+}
+.pengembalian-container button:hover {
+    opacity: 0.8;
+}
+.pengembalian-container button.selesai-button:hover {
+    background-color: #3b48ff;
+}
+.pengembalian-container input[type="email"],
+.pengembalian-container input[type="text"],
+.pengembalian-container input[type="number"],
+.pengembalian-container input[type="date"],
+.pengembalian-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #5352ED;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding-left: 20px;
+}
+.addnew-container {
+    width: 400px;
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+}
+.addnew-container h2 {
+    margin-bottom: 20px;
+}
+.addnew-container label {
+    float: left;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 7px;
+    color: #5352ED;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+.addnew-container button {
+    width: 75%;
+    height: 35px;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.addnew-container button.add-button {
+    background-color: #FF7F56;
+    color: white;
+}
+.addnew-container button:hover {
+    opacity: 0.8;
+}
+.addnew-container button.add-button:hover {
+    background-color: #3b48ff;
+}
+.addnew-container input[type="text"]{
+    width: 100%;
+    height: 300px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #5352ED;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding-left: 20px;
+}
+.editsin-container {
+    width: 400px;
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+}
+.editsin-container h2 {
+    margin-bottom: 20px;
+}
+.editsin-container label {
+    float: left;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 7px;
+    color: #5352ED;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+.editsin-container button {
+    width: 75%;
+    height: 35px;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.editsin-container button.update-button {
+    background-color: #FF7F56;
+    color: white;
+}
+.editsin-container button:hover {
+    opacity: 0.8;
+}
+.editsin-container button.update-button:hover {
+    background-color: #3b48ff;
+}
+.editsin-container input[type="text"]{
+    width: 100%;
+    height: 300px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #5352ED;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding-left: 20px;
+}
+.addnewpost-container {
+    width: 400px;
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+}
+.addnewpost-container h3 {
+    margin-bottom: 20px;
+    background-color: #000000;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.addnewpost-container label {
+    float: left;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 7px;
+    color: #5352ED;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+.addnewpost-container button {
+    width: 75%;
+    height: 35px;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.addnewpost-container button.posting-button {
+    background-color: #FF7F56;
+    color: white;
+    font-size: 17px;
+    top: 50%;
+    margin-top: 30px;
+}
+.addnewpost-container button:hover {
+    opacity: 0.8;
+}
+.addnewpost-container button.posting-button:hover {
+    background-color: #3b48ff;
+}
+.addnewpost-container input[type="file"],
+.addnewpost-container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #5352ED;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding-left: 20px;
+}
+.editpost-container {
+    width: 400px;
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+}
+.editpost-container h3 {
+    margin-bottom: 20px;
+    background-color: #000000;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.editpost-container label {
+    float: left;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 7px;
+    color: #5352ED;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+.editpost-container button {
+    width: 75%;
+    height: 35px;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.editpost-container button.Update-button {
+    background-color: #FF7F56;
+    color: white;
+    font-size: 17px;
+    top: 50%;
+    margin-top: 30px;
+}
+.editpost-container button:hover {
+    opacity: 0.8;
+}
+.editpost-container button.updtae-button:hover {
+    background-color: #3b48ff;
+}
+.editpost-container input[type="file"],
+.editpost-container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #5352ED;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding-left: 20px;
+}
+.editbuku-container {
+    width: 400px;
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+}
+.editbuku-container h3 {
+    margin-bottom: 20px;
+    background-color: #000000;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.editbuku-container label {
+    float: left;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 7px;
+    color: #5352ED;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+.editbuku-container button {
+    width: 75%;
+    height: 35px;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.editbuku-container button.Update-button {
+    background-color: #FF7F56;
+    color: white;
+    font-size: 17px;
+    top: 50%;
+    margin-top: 30px;
+}
+.editbuku-container button:hover {
+    opacity: 0.8;
+}
+.editbuku-container button.updtae-button:hover {
+    background-color: #3b48ff;
+}
+.editbuku-container input[type="file"],
+.editbuku-container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #5352ED;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding-left: 20px;
+}
+.addbuku-container {
+    width: 400px;
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+}
+.addbuku-container h3 {
+    margin-bottom: 20px;
+    background-color: #000000;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.addbuku-container label {
+    float: left;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 7px;
+    color: #5352ED;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+.addbuku-container button {
+    width: 75%;
+    height: 35px;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.addbuku-container button.tambah-button {
+    background-color: #FF7F56;
+    color: white;
+    font-size: 17px;
+    top: 50%;
+    margin-top: 30px;
+}
+.addbuku-container button:hover {
+    opacity: 0.8;
+}
+.addbuku-container button.tambah-button:hover {
+    background-color: #3b48ff;
+}
+.addbuku-container input[type="file"],
+.addbuku-container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #5352ED;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding-left: 20px;
+}

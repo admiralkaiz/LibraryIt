@@ -1,17 +1,66 @@
-@extends('template')
+@extends('newtemplate')
 
 @section('title', $title)
 
 @section('content')
-<div class="col-3">
-            <p>
-                <a href="/admin/books">
-                    Back
-                </a>
-            </p>
-            <h4>
-                {{ $title }}
-            </h4>
+<style>
+    .addbuku-container {
+    width: 400px;
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+}
+.addbuku-container h3 {
+    margin-bottom: 20px;
+    background-color: #000000;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.addbuku-container label {
+    float: left;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 7px;
+    color: #6D67E4;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+.addbuku-container button {
+    width: 75%;
+    height: 35px;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.addbuku-container button .tambah-button {
+    background-color: #FF7F56;
+    color: white;
+    font-size: 17px;
+    top: 50%;
+    margin-top: 30px;
+}
+.addbuku-container button:hover {
+    opacity: 0.8;
+}
+.addbuku-container button .tambah-button:hover {
+    background-color: #6D67E4;
+}
+.addbuku-container input[type="file"],
+.addbuku-container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #6D67E4;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding-left: 20px;
+}
+</style>
+<div class="addbuku-container" style="width: 50%; margin-left:auto; margin-right:auto">
+            <h3>Tambah Buku</h3>
             <form class="border" style="padding:20px" method="POST" action="{{ $action }}" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="_method" value="{{ $method }}" />
@@ -79,7 +128,7 @@
                     @enderror
                 </div>
                 <div style="text-align:center">
-                    <button class="btn btn-success">
+                    <button type="submit" class="tambah-button" style="background-color: #FF7F56; color: #ffffff;">
                         Save
                     </button>
                 </div>

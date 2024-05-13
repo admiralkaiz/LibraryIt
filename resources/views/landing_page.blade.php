@@ -232,12 +232,12 @@
 <div class="nav-container">
     <nav class="navbar">
         <div class="navbar-right">
-          <a href="#" class="navbar-link">Beranda</a>
+          <!-- <a href="#" class="navbar-link">Beranda</a>
           <a href="#" class="navbar-link">Kategori</a>
           <form action="#" class="search-form">
             <input type="text" placeholder="Cari..." class="search-input">
             <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
-          </form>
+          </form> -->
           <a href="/login"class="navbar-masuk">Masuk</a>
           <button class="navbar-button"><a href="/register">Daftar</a></button>
         </div>
@@ -286,7 +286,7 @@
   </div>
 </div> 
 
-<!-- <div class="background-in-card">
+<div class="background-in-card">
   <div class="card-container-kiri">
     <h2>ISBN</h2>
     <p>International Standard Book Number</p>
@@ -392,7 +392,7 @@
   <div class="footer-lapisan-bawah">
     <p class="hak-cipta" style="margin-left: 40px; font-weight: bold;">Hak Cipta 2023 © LibraryIt!</p>
     <p class="jml-pengunjung" style="text-align: right; margin-right: 40px; font-weight: bold;">Jumlah Pengunjung :  4807970</p>
-  </div> -->
+  </div>
 </footer>
 </body>
 </html>

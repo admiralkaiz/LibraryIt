@@ -3,7 +3,6 @@
 @section('title', $title)
 
 @section('content')
-
 <style>
 body {
   font-family: 'Poppins', sans-serif;
@@ -132,19 +131,8 @@ body {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    margin-left: 50px;
     position: relative; /* Jarak antara setiap pasangan gambar dan informasi */
 }
-
-.profile-picture img{
-    width: 100px;
-    height: 120px;
-    border-radius: 5px;
-    margin-right: 20px;
-    position: absolute; /* Menjadikan posisi absolut agar tetap di atas */
-    top: 0;
-}
-
 .info {
     flex: 1; /* Memperluas agar mengisi sisa ruang */
 }
@@ -191,88 +179,67 @@ body {
 .info table tr:nth-child(even) {
     background-color: #f2f2f2;
 }
-.komentar-container {
-    margin-top: 20px;
+.info img{
+    width: 200px;
+    height: 200px;
+    align-items: center;
+    display: block;
+    margin: 0 auto;
 }
-.komentar-input {
-    width: 300px;
-    height: 100px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    resize: vertical; /* Biarkan textarea dapat diubah ukurannya secara vertikal */
-    margin-bottom: 10px;
+.container-box {
+    display: flex; /* Mengaktifkan flexbox */
 }
 
-.komentar-button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 5px;
-    background-color: #6D67E4;
-    color: white;
-    cursor: pointer;
+.code-box {
+    background-color: #5352ED; /* Warna biru */
+    padding: 5px; /* Padding untuk memberikan ruang di sekitar teks */
+    border-radius: 5px; /* Membuat sudut kotak menjadi melengkung */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Efek bayangan untuk menampilkan kotak */
+    margin-bottom: 20px;
+    width: 100px;
+    height: 20px;
+    text-align: center;
+    color: #ffffff; /* Memberikan ruang di bawah kotak */
 }
 
-.komentar-button:hover {
-    background-color: #ED5353;
+.code-box2 {
+    background-color: #5352ED;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 150px;
+    height: 20px;
+    text-align: center;
+    color: #ffffff;
+    margin-left: 10px; /* Memberikan jarak antara .code-box dan .code-box2 */
 }
 </style>
 
 <div class="container">
-<div class="profile-section">
-    <div class="profile-picture">
-        <img src="/books/{{$data->image}}" alt="Profile Picture">
-    </div>
-    <div class="info" style="margin-left: 120px;">
-        <h2>Judul Buku</h2>
-        <h3 style="margin-bottom: 5px;">Sinopsis</h3>
-        <p style="margin-bottom: 20px;">{{$data->synopsis}}</p>
-        <h3 style="margin-bottom: 5px;">Informasi Detail</h3>
-        <p><b>Kepengarangan:</b> {{$data->author}}</p>
-        <p><b>Penerbit:</b>  {{$data->publisher}}</p>
-        <p><b>ISBN/ISSN:</b> {{$data->isbn}}</p>
-        <div>
-        @if($admin_mode)
-            <a href="/admin/books/{{ $data->id }}/edit">Edit</a>
-            <form method="POST" action="/admin/books/{{ $data->id }}/delete" style="display:inline" onsubmit="return confirm('Yakin hapus?')">
-                @csrf
-                @method('DELETE')
-                <button class="btn btn-danger"> Delete </button>
-            </form>
-        @endif
-        </div>
-        <div class="komentar-container">
-            <h3 style="margin-bottom: 5px;">Tambahkan Review Anda:</h3>
-            <!-- <textarea class="komentar-input" placeholder="Tambahkan komentar Anda di sini..."></textarea> -->
-            <form class="border" style="padding: 20px" method="POST" action="/{{ $role }}/reviews/add">
-                @csrf 
-                <input type="hidden" name="_method" value="POST" />
-                <input type="hidden" name="book_id" value="{{ $data->id }}">
-                <div class="form-group p-2">
-                    <label></label>
-                    <textarea type="text" name="description" class="komentar-input" placeholder="Tambahkan komentar Anda di sini..."></textarea>
+        <div class="profile-section">
+            <div class="info" style="margin-left: 120px;">
+                <h2>{{$data->title}}</h2>
+                <div class="container-box">
+                <div class="code-box2"><p style="margin-bottom: 20px;">Oleh {{$data->user->name}}</p></div>
+                @if ($data->user->id==Auth::user()->id)
+                <br />
+                <br />
+                <form method="POST" action="/{{ $role }}/posts/{{ $data->id }}/delete" style="display:inline" onsubmit="return confirm('Yakin hapus?')">
+                    @csrf
+                    @method('DELETE')
+                    <button class=""> Hapus </button>
+                </form>
+                <br />
+                <br />
+                <br />
+                @endif
                 </div>
-                <div style="text-align:center">
-                    <button class="komentar-button">Kirim</button>
-                </div>
-            </form>
-            <div>
-                <h3>Ulasan Buku</h3>
-            @foreach($reviews as $r)
-            <p><b>{{$r->user->name}}</b></p>
-            <p>{{$r->description}}
-            @if(Auth::user()->id == $r->user->id)
-            <form method="POST" action="/{{ $role }}/reviews/{{ $r->id }}/delete" style="display:inline" onsubmit="return confirm('Yakin hapus?')">
-                @csrf
-                @method('DELETE')
-                <button class=""> Hapus </button>
-            </form>
-            @endif    
-            <br /><br /></p>
-            @endforeach
+                @if (isset($data->image))
+                <img src="/posts/{{$data->image}}" alt="" style="margin-bottom: 20px;">
+                @endif
+                <p>{{$data->description}}</p>
             </div>
-        </div> 
-    </div>
-</div>
-</div>
+        </div>
+
 @endsection

@@ -1,16 +1,24 @@
-@extends('template')
+@extends('newtemplate')
 
 @section('title', $title)
 
 @section('content')
-<div class="row p-0 container-fluid justify-content-center">
-    <div class="row p-5 container-fluid justify-content-center">
-        <h1 class="text-center">
-            Borrowing List
-        </h1>
-    </div>
-
-    @if($admin_mode)
+<div class="row p-5 container-fluid justify-content-center">
+    <h1 align="center">
+        Borrowing List
+    </h1>
+</div>
+@if($admin_mode)
+<div class="pagination-container" style="margin-top: 1px">
+    <p align="center">
+    <form action="/admin/borrowings/create">
+        <input type="submit" value="Add Borrowing" />
+    </form>
+    </p>
+</div>
+@endif
+<div class="table-container" style="margin-top: 1px; margin-bottom: 100px;">
+@if($admin_mode)
     <div class="row container-fluid justify-content-right text-end" style="width: 90%;">
         <div class="float-right">
             <a href="/admin/borrowings/create" class="btn btn-primary">Add Borrowing</a>
@@ -67,5 +75,5 @@
         @endforeach
     </table>
     @endif
-</div>
+    </div>
 @endsection

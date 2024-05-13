@@ -8,6 +8,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class BorrowingController extends Controller
 {
@@ -23,14 +24,16 @@ class BorrowingController extends Controller
          * user yang bersangkutan yang masih berlangsung (atau belum dikembalikan)
         */
 
-        // foreach (Borrowing::get() as $b) {
-        //     if (Carbon::now()->gt(Carbon::parse($b->borrow_date))) {
-        //         $b->is_late = 1;
-        //     }
-        // }
+        foreach (Borrowing::get() as $b) {
+            if (Carbon::now()->gt(Carbon::parse($b->borrow_date))) {
+                $b->is_late = 1;
+                $b->save();
+            }
+        }
 
         return view('borrowinglist', [
             'borrowings' => Borrowing::get(),
+            // 'borrowings' => DB::table('borrowings')->paginate(20),
             'title' => 'LibraryIt | Borrowing List',
             'admin_mode' => Auth::user()->is_admin==1,
             'role' => (Auth::user()->is_admin==1)? 'admin' : 'user'
@@ -45,7 +48,7 @@ class BorrowingController extends Controller
         /**
          * Fungsi untuk menampilkan form input data peminjaman buku
          */
-        return view('admin.borrowingform', [
+        return view('borrowingform', [
             'title' => 'Input New Borrowing',
             'method' => 'POST',
             'action' => '/admin/borrowings/store',

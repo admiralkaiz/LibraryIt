@@ -14,22 +14,13 @@ class ReviewController extends Controller
     public function store(Request $req)
     {
         $req->validate([
-            'title' => 'required',
             'description' => 'required',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg'
         ]);
 
         $rev = new Review;
         $rev->user_id = Auth::user()->id;
         $rev->book_id = $req->book_id;
-        $rev->title = $req->title;
         $rev->description = $req->description;
-
-        if (isset($req->image)) {
-            $imageName = time() . '.' . $req->image->extension();
-            $req->image->move(public_path('reviews'), $imageName);
-            $rev->image = $imageName;
-        }
 
         $rev->save();
 

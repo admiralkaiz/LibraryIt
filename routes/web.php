@@ -72,6 +72,7 @@ Route::middleware(['auth'])->group(function () {
         // Post
         Route::get('/admin/posts', [PostController::class, 'index']);
         Route::post('/admin/posts/add', [PostController::class, 'store']);
+        Route::get('/admin/posts/{id}', [PostController::class, 'show']);
         Route::delete('/admin/posts/{id}/delete', [PostController::class, 'destroy']);
 
         // Review
@@ -91,6 +92,7 @@ Route::middleware(['auth'])->group(function () {
     // Post
     Route::get('/user/posts', [PostController::class, 'index']);
     Route::post('/user/posts/add', [PostController::class, 'store']);
+    Route::get('/user/posts/{id}', [PostController::class, 'show']);
     Route::delete('/user/posts/{id}/delete', [PostController::class, 'destroy']);
 
     // Review
